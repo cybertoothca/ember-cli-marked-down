@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-markdown",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "This addon provides a means to generate html formatted markup from markdown source.  The ShowdownJS (https://github.com/showdownjs/showdown) library is leveraged to generate the html and this addon has been designed to be configured at the application's `environment.js` level.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,10 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybertoothca/ember-cli-marked-down.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -36,14 +39,20 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
-    "ember-welcome-page": "^1.0.1",
     "loader.js": "^4.0.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "showdown",
+    "showdownjs",
+    "markdown",
+    "daring fireball",
+    "john gruber",
+    "cybertooth"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.1.6"
+    "ember-cli-babel": "^5.1.6",
+    "ember-cli-htmlbars": "^1.1.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
