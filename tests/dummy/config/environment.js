@@ -46,20 +46,20 @@ module.exports = function (environment) {
         /**
          * (boolean) [default false] Turning this on will enable GFM autolink style.
          */
-        simplifiedAutoLink: false,
+        simplifiedAutoLink: true,
         /**
          * (boolean) [default false] Turning this on will stop showdown from interpreting underscores
          * in the middle of words as <em> and <strong> and instead treat them as literal underscores.
          */
-        literalMidWordUnderscores: false,
+        literalMidWordUnderscores: true,
         /**
          * (boolean) [default false] Enable support for strikethrough syntax.
          */
-        strikethrough: false,
+        strikethrough: true,
         /**
          * (boolean) [default false] Enable support for tables syntax.
          */
-        tables: false,
+        tables: true,
         /**
          * (boolean) [default false] If enabled adds an id property to table headers tags.
          */
