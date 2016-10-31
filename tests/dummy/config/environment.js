@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'dummy',
     environment: environment,
@@ -16,6 +16,72 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      /**
+       * Showdown global configuration settings.
+       * @see https://github.com/showdownjs/showdown#valid-options
+       */
+      showdown: {
+        /**
+         * (boolean) [default false] Omit the trailing newline in a code block.
+         */
+        omitExtraWLInCodeBlocks: false,
+        /**
+         * (boolean) [default false] Disable the automatic generation of header ids. Setting to true
+         * overrides prefixHeaderId
+         */
+        noHeaderId: false,
+        /**
+         * (string/boolean) [default false] Add a prefix to the generated header ids. Passing a
+         * string will prefix that string to the header id. Setting to true will add a generic 'section' prefix.
+         */
+        prefixHeaderId: false,
+        /**
+         * (boolean) [default false] Enable support for setting image dimensions from within markdown syntax.
+         */
+        parseImgDimensions: false,
+        /**
+         * (integer) [default 1] Set the header starting level.
+         */
+        headerLevelStart: 1,
+        /**
+         * (boolean) [default false] Turning this on will enable GFM autolink style.
+         */
+        simplifiedAutoLink: false,
+        /**
+         * (boolean) [default false] Turning this on will stop showdown from interpreting underscores
+         * in the middle of words as <em> and <strong> and instead treat them as literal underscores.
+         */
+        literalMidWordUnderscores: false,
+        /**
+         * (boolean) [default false] Enable support for strikethrough syntax.
+         */
+        strikethrough: false,
+        /**
+         * (boolean) [default false] Enable support for tables syntax.
+         */
+        tables: false,
+        /**
+         * (boolean) [default false] If enabled adds an id property to table headers tags.
+         */
+        tablesHeaderId: false,
+        /**
+         * (boolean) [default true] Enable support for GFM code block style.
+         */
+        ghCodeBlocks: true,
+        /**
+         * (boolean) [default false] Enable support for GFM takslists.
+         */
+        tasklists: false,
+        /**
+         * (boolean) [default false] Prevents weird effects in live previews due to incomplete input.
+         */
+        smoothLivePreview: false,
+        /**
+         * (boolean) [default false] Tries to smartly fix indentation problems related to es6
+         * template strings in the midst of indented code.
+         */
+        smartIndentationFix: false
+      }
     }
   };
 
