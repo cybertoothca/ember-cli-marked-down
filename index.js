@@ -2,5 +2,10 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-markdown'
+  name: 'ember-cli-marked-down',
+  included: function (app) {
+    this._super.included(app);
+    app.import(app.bowerDirectory + '/showdown/dist/showdown.js');
+  }
+
 };

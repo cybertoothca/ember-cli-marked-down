@@ -1,4 +1,4 @@
-# ember-cli-marked-down [![GitHub version](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down)
+# ember-cli-marked-down [![GitHub version](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down) ![](http://embadge.io/v1/badge.svg?range=%5E2.3.0)
 
 [![npm version](https://badge.fury.io/js/ember-cli-marked-down.svg)](https://badge.fury.io/js/ember-cli-marked-down) [![CircleCI](https://circleci.com/gh/cybertoothca/ember-cli-marked-down.svg?style=shield)](https://circleci.com/gh/cybertoothca/ember-cli-marked-down) [![Code Climate](https://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](https://codeclimate.com/github/cybertoothca/ember-cli-marked-down) ![Dependencies](https://david-dm.org/cybertoothca/ember-cli-marked-down.svg) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down) [![License](https://img.shields.io/npm/l/ember-cli-marked-down.svg)](LICENSE.md)
 
@@ -25,16 +25,17 @@ This addon supplied the following _components_:
 
 * 
 
-...and the following _mixins_:
+...and the following _service_:
 
-*  
+*  `ShowdownConverter` - the service that loads ShowdownJS globals
+and instantiates a Converter that will be used to `makeHtml(...)`.
 
 _Further information about these items can be found in the Usage 
 section below._
 
 ## Requirements
 
-* Ember >= 1.13.0
+* Ember >= 2.3.0
 * Ember CLI
 
 ## Installation
@@ -42,6 +43,91 @@ section below._
 The following will install this addon:
 
     $ ember install ember-cli-marked-down
+
+### ShowdownJS Configuration
+
+Inside the Ember application's `config/environment.js`, set 
+ShowdownJS' global options according to your preference.  Use the 
+following example as a template:
+
+    // config/environment.js
+    
+    module.exports = function (environment) {
+      var ENV = {
+        // ...
+        APP: {
+          // ...
+          /**
+           * Showdown global configuration settings.
+           * @see https://github.com/showdownjs/showdown#valid-options
+           */
+          showdown: {
+            /**
+             * (boolean) [default false] Omit the trailing newline in a code block.
+             */
+            omitExtraWLInCodeBlocks: false,
+            /**
+             * (boolean) [default false] Disable the automatic generation of header ids. Setting to true
+             * overrides prefixHeaderId
+             */
+            noHeaderId: false,
+            /**
+             * (string/boolean) [default false] Add a prefix to the generated header ids. Passing a
+             * string will prefix that string to the header id. Setting to true will add a generic 'section' prefix.
+             */
+            prefixHeaderId: false,
+            /**
+             * (boolean) [default false] Enable support for setting image dimensions from within markdown syntax.
+             */
+            parseImgDimensions: false,
+            /**
+             * (integer) [default 1] Set the header starting level.
+             */
+            headerLevelStart: 1,
+            /**
+             * (boolean) [default false] Turning this on will enable GFM autolink style.
+             */
+            simplifiedAutoLink: false,
+            /**
+             * (boolean) [default false] Turning this on will stop showdown from interpreting underscores
+             * in the middle of words as <em> and <strong> and instead treat them as literal underscores.
+             */
+            literalMidWordUnderscores: false,
+            /**
+             * (boolean) [default false] Enable support for strikethrough syntax.
+             */
+            strikethrough: false,
+            /**
+             * (boolean) [default false] Enable support for tables syntax.
+             */
+            tables: false,
+            /**
+             * (boolean) [default false] If enabled adds an id property to table headers tags.
+             */
+            tablesHeaderId: false,
+            /**
+             * (boolean) [default true] Enable support for GFM code block style.
+             */
+            ghCodeBlocks: true,
+            /**
+             * (boolean) [default false] Enable support for GFM takslists.
+             */
+            tasklists: false,
+            /**
+             * (boolean) [default false] Prevents weird effects in live previews due to incomplete input.
+             */
+            smoothLivePreview: false,
+            /**
+             * (boolean) [default false] Tries to smartly fix indentation problems related to es6
+             * template strings in the midst of indented code.
+             */
+            smartIndentationFix: false
+          }
+        }
+      };
+      // ...
+      return ENV;
+    }
 
 ### Upgrading
 
