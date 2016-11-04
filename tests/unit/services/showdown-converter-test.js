@@ -30,23 +30,19 @@ test('when loaded the converter defaults are set accordingly', function (assert)
   let service = this.subject();
   assert.ok(service);
   assert.equal(Object.keys(showdown.getOptions()).length, 14);
-  assert.notOk(service.get('converter').getOption('omitExtraWLInCodeBlocks'));
-  assert.notOk(service.get('converter').getOption('noHeaderId'));
-  assert.notOk(service.get('converter').getOption('prefixHeaderId'));
-  assert.notOk(service.get('converter').getOption('parseImgDimensions'));
-  assert.equal(service.get('converter').getOption('headerLevelStart'), 1);
-  assert.ok(service.get('converter').getOption('simplifiedAutoLink'));
-  assert.ok(service.get('converter').getOption('literalMidWordUnderscores'));
-  assert.ok(service.get('converter').getOption('strikethrough'));
-  assert.ok(service.get('converter').getOption('tables'));
-  assert.notOk(service.get('converter').getOption('tablesHeaderId'));
-  assert.ok(service.get('converter').getOption('ghCodeBlocks'));
-  assert.notOk(service.get('converter').getOption('tasklists'));
-  assert.notOk(service.get('converter').getOption('smoothLivePreview'));
-  assert.notOk(service.get('converter').getOption('smartIndentationFix'));
-});
-
-test('when asking the converter to make some html', function (assert) {
-  let service = this.subject();
-  assert.equal(service.get('converter').makeHtml('# Some Heading 1'), '<h1 id=\"someheading1\">Some Heading 1</h1>');
+  const converter = new showdown.Converter();
+  assert.notOk(converter.getOption('omitExtraWLInCodeBlocks'));
+  assert.notOk(converter.getOption('noHeaderId'));
+  assert.notOk(converter.getOption('prefixHeaderId'));
+  assert.notOk(converter.getOption('parseImgDimensions'));
+  assert.equal(converter.getOption('headerLevelStart'), 1);
+  assert.ok(converter.getOption('simplifiedAutoLink'));
+  assert.ok(converter.getOption('literalMidWordUnderscores'));
+  assert.ok(converter.getOption('strikethrough'));
+  assert.ok(converter.getOption('tables'));
+  assert.notOk(converter.getOption('tablesHeaderId'));
+  assert.ok(converter.getOption('ghCodeBlocks'));
+  assert.notOk(converter.getOption('tasklists'));
+  assert.notOk(converter.getOption('smoothLivePreview'));
+  assert.notOk(converter.getOption('smartIndentationFix'));
 });

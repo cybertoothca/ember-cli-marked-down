@@ -5,11 +5,12 @@
 This addon provides a means to generate html formatted markup from 
 _markdown_ source.  The [ShowdownJS](https://github.com/showdownjs/showdown) 
 library is leveraged to generate the html and this addon has been 
-designed to be configured at the application's `environment.js` level.
+designed to be globally configured at the application's 
+`environment.js` level.
 
-It seems worth mentioning that [Markdown was created by John Gruber](https://daringfireball.net/projects/markdown/) 
+It is worth mentioning that [Markdown was created by John Gruber](https://daringfireball.net/projects/markdown/) 
 and the ShowdownJS library was authored by John Fraser and is 
-a _vanilla_ port of the original works.
+a _vanilla_ port of Gruber's original works.
 
 ## Cross-Side Scripting (XSS) Vulnerability
 
@@ -21,14 +22,21 @@ XSS](https://github.com/showdownjs/showdown/wiki/Markdown's-XSS-Vulnerability-(a
 
 ## What Does This Addon Do?
 
-This addon supplied the following _components_:
+This addon supplied the following _helper_:
 
-* 
+* `MarkedDown` - the helper that produces html from the supplied 
+markdown.  You can override Showdown options by passing them into the
+helper.
 
-...and the following _service_:
+...the following _service_:
 
-*  `ShowdownConverter` - the service that loads ShowdownJS globals
-and instantiates a Converter that will be used to `makeHtml(...)`.
+*  `ShowdownConverter` - the service that loads ShowdownJS globals.
+
+...the following _initializer_:
+
+* `ShowdownConverter` - which initializes the `ShowdownConverter` 
+service in all scopes.  This makes sure that any override settings
+placed inside the `environment.js` are applied to the Showdown globals.
 
 _Further information about these items can be found in the Usage 
 section below._
@@ -137,28 +145,43 @@ you are done to get the latest version of the addon.
 
 ## Usage
 
-### Components
+### Helpers
 
-#### ``
+#### `{{marked-down "Some __markdown__ text"}}`
 
+Will generate the html from the supplied markdown string.
 
 ##### Arguments
 
+* The markdown source `String` is the first argument to the helper.
+* Use the helper's hash to supply all other markdown options that need
+be applied to the cooked html.  See the options [listed above in the
+ShowdownJS Configuration](#showdownjs-configuration) section.
+
 ##### Examples
 
+    {{marked-down "Some __markdown__ text"}} => <p>Some <strong>markdown</strong> text</p>
+    {{marked-down "Some ~~struck~~ markdown text" strikethrough=true}} => <p>Some <del>struck</del> markdown text</p>
 
-### Mixins
+### Services
 
-#### ``
+#### `ShowdownConverter`
 
-##### Properties
+This service sets the Showdown libraries globals from the 
+`environment.js` settings; [see the sample configuration
+above](#showdownjs-configuration).
+
+### Initializers
+
+#### `ShowdownConverter`
+
+An initializer that makes sure the `ShowdownConverter` service is
+initialized for all scopes.  This forces the `Showdown` globals to
+be set to the settings found in the `environment.js`.
 
 ### Troubleshooting And Tips
 
-1. If you have a title that is dynamic, maybe it includes the current 
-time, you will want to bind a function to 
-the mixin's `defaultTitle` property and __NOT__ specify a `title`
-argument.
+1. 
 
 ---
 

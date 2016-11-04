@@ -1,1 +1,0 @@
-export { default } from 'ember-cli-marked-down/components/md-div';
