@@ -9,26 +9,27 @@ designed to be globally configured at the application's
 `environment.js` level.
 
 It is worth mentioning that [Markdown was created by John Gruber](https://daringfireball.net/projects/markdown/) 
-and the ShowdownJS library was authored by John Fraser and is 
+and the [ShowdownJS](https://github.com/showdownjs/showdown) library 
+was authored by John Fraser and is 
 a _vanilla_ port of Gruber's original works.
 
 ## Cross-Side Scripting (XSS) Vulnerability
 
 Notice: this addon will be converting _Markdown_ source in the 
-client/browser within your Ember application.  The produced HTML
-is passed through `Ember.String.htmlSafe(...)` to attempt to filter any
-XSS attempts.  This is not fool-proof. Know your user audience and 
-assume all risks.
+client (browser).  The produced HTML
+is passed to `Ember.String.htmlSafe(...)` to attempt to filter any
+XSS attempts.  This is not fool-proof.  __Know your user audience and 
+assume all risks.__
 
 [Check out ShowdownJS's wiki post about XSS for additional information](https://github.com/showdownjs/showdown/wiki/Markdown's-XSS-Vulnerability-(and-how-to-mitigate-it)).
 
 ## What Does This Addon Do?
 
-This addon supplied the following _helper_:
+This addon supplies the following _helper_:
 
-* `MarkedDown` - the helper that produces html from the supplied 
-markdown.  You can override Showdown options by passing them into the
-helper.
+* `{{marked-down}}` - the helper that produces html from the supplied 
+markdown.  You can override [Showdown's options](https://github.com/showdownjs/showdown#valid-options) by passing named
+arguments to the helper.
 
 ...the following _service_:
 
@@ -45,7 +46,7 @@ section below._
 
 ## Requirements
 
-* Ember >= 2.3.0
+* Ember >= __2.3.0__
 * Ember CLI
 
 ## Installation
@@ -54,7 +55,11 @@ The following will install this addon:
 
     $ ember install ember-cli-marked-down
 
-### ShowdownJS Configuration
+This will install the Showdown library in your bower.json and also
+make sure that it is added to your application and available at test
+and runtime.
+
+### ShowdownJS Configuration (Optional)
 
 Inside the Ember application's `config/environment.js`, set 
 ShowdownJS' global options according to your preference.  Use the 
@@ -141,9 +146,9 @@ following example as a template:
 
 ### Upgrading
 
-When working through the Ember upgrade process, I recommend
-invoking the `ember install ember-cli-marked-down` command once 
-you are done to get the latest version of the addon.
+When completing the Ember CLI upgrade process, I recommend
+invoking the `ember install ember-cli-marked-down` to reinstall the
+latest version of this addon.
 
 ## Usage
 
@@ -155,15 +160,27 @@ Will generate the html from the supplied markdown string.
 
 ##### Arguments
 
-* The markdown source `String` is the first argument to the helper.
+* The markdown source `String` is the only unnamed argument passed 
+into the helper.
 * Use the helper's hash to supply all other markdown options that need
 be applied to the cooked html.  See the options [listed above in the
 ShowdownJS Configuration](#showdownjs-configuration) section.
 
 ##### Examples
 
-    {{marked-down "Some __markdown__ text"}} => <p>Some <strong>markdown</strong> text</p>
-    {{marked-down "Some ~~struck~~ markdown text" strikethrough=true}} => <p>Some <del>struck</del> markdown text</p>
+    {{marked-down "Some __markdown__ text"}}
+
+...yields:
+
+    <p>Some <strong>markdown</strong> text</p>
+
+Passing in a Showdown option:
+
+    {{marked-down "Some ~~struck~~ markdown text" strikethrough=true}}
+    
+...yields
+    
+    <p>Some <del>struck</del> markdown text</p>
 
 ### Services
 
