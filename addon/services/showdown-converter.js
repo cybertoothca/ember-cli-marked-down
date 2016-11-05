@@ -3,22 +3,14 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   /**
-   * Set on `init` and will be the Singleton converter used to `makeHtml(...)`
-   */
-  converter: undefined,
-  /**
-   *
+   * When initializing the Service set all of the globals according to the values found in the `environment.js`.
    */
   _instantiateConverter: Ember.on('init', function () {
     this._setShowdownGlobals();
-    this._setConverter();
   }),
-  _setConverter() {
-    // create the singleton converter
-    this.set('converter', new showdown.Converter());
-  },
   _setShowdownGlobals() {
     // grab the application configuration
+    // NOTE: Ember.getOwner(...) is only available in Ember 2.3+
     const config = Ember.getOwner(this).resolveRegistration('config:environment');
     // set showdown global settings from the environment
     if (Ember.isEmpty(config.APP.showdown)) {
