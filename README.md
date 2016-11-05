@@ -15,10 +15,12 @@ a _vanilla_ port of Gruber's original works.
 ## Cross-Side Scripting (XSS) Vulnerability
 
 Notice: this addon will be converting _Markdown_ source in the 
-client within your Ember application.  Applications using this 
-technique are susceptible to XSS attacks and as such users of this
-addon must accept that risk.  [Check out ShowdownJS's wiki post about
-XSS](https://github.com/showdownjs/showdown/wiki/Markdown's-XSS-Vulnerability-(and-how-to-mitigate-it)).
+client/browser within your Ember application.  The produced HTML
+is passed through `Ember.String.htmlSafe(...)` to attempt to filter any
+XSS attempts.  This is not fool-proof. Know your user audience and 
+assume all risks.
+
+[Check out ShowdownJS's wiki post about XSS for additional information](https://github.com/showdownjs/showdown/wiki/Markdown's-XSS-Vulnerability-(and-how-to-mitigate-it)).
 
 ## What Does This Addon Do?
 

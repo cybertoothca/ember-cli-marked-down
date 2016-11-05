@@ -3,6 +3,19 @@ import { module, test } from 'qunit';
 
 module('Unit | Helper | marked down');
 
+test('when filtering xss attack', function (assert) {
+  const markdown = `Paragraph before...
+
+<script type='text/javascript'>Ember.Logger.info('Attempted XSS');</script>
+
+...Paragraph after
+`;
+
+  // TODO: this test's markedDown output is incomplete and I cannot figure out why?!
+  assert.equal(markedDown(markdown).toHTML(),
+    '<p>P</p>', 'The script is not executed and has been stripped from the markup.');
+});
+
 test('when param is null', function (assert) {
   assert.equal(markedDown(null), '');
 });

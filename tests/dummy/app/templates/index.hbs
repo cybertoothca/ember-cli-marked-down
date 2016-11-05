@@ -15,3 +15,15 @@ http://github.com
 1. Numbered List
   1. Another
 1. Number Two"}}
+
+<h2>Testing Some XSS</h2>
+
+{{marked-down "<u>Some underlined text</u>
+
+Before some script tag...
+
+<script type='text/javascript'>alert('XSS Attack Attempt')</script>
+
+...after the script tag
+"
+}}
