@@ -25,17 +25,25 @@ assume all risks.__
 
 ## What Does This Addon Do?
 
-This addon supplies the following _helper_:
+This addon supplies the following:
+
+### Helpers
 
 * `{{marked-down}}` - the helper that produces html from the supplied 
 markdown.  You can override [Showdown's options](https://github.com/showdownjs/showdown#valid-options) by passing named
 arguments to the helper.
 
-...the following _service_:
+### Components
+
+* `{{set-links-target}}` - a component that wraps some html, looks for
+any `<a>`nchor elements and sets their `target` attribute to the target
+value that you specify.
+
+### Services
 
 *  `ShowdownConverter` - the service that loads ShowdownJS globals.
 
-...the following _initializer_:
+### Initializers
 
 * `ShowdownConverter` - which initializes the `ShowdownConverter` 
 service in all scopes.  This makes sure that any override settings
@@ -181,6 +189,47 @@ Passing in a Showdown option:
 ...yields
     
     <p>Some <del>struck</del> markdown text</p>
+
+### Components
+
+#### `{{set-links-target}}`
+
+This component surrounds some html markup, searches the surrounded 
+markup for `<a>` elements (links), and then proceeds to
+add a specified `target` attribute to the link should it not already
+have a target.
+
+The component by default will not assign the `target` attribute to 
+links that it finds that belong to the host that the application is
+running in.  That is to say, if your app is running at 
+http://example.com and the component find a link that starts with
+`http://example.com`, then that link will NOT have a target attribute
+assigned.  You can override this default behaviour by setting the
+`excludeSelfLinks?` argument to `false`.
+
+##### Arguments
+
+* `excludeSelfLinks?` - when `true` (DEFAULT) any links that are found
+in the component's yield that share the same host url as your site will
+NOT have the target attribute assigned.
+* `targetValue` - one of the valid target values that can be passed to
+the `target` attribute of an anchor/link element.  One of: `_blank`, 
+`_self`, `_parent`, `_top`, or the name of a frame in the page.  See
+[W3Schools reference](http://www.w3schools.com/jsref/prop_anchor_target.asp).
+
+##### Examples
+
+Default Behaviour:
+
+    {{#set-links-target excludeSelfLinks?=true targetValue="_blank"}}
+      <a href="http://github.com">GitHub</a>
+    {{/set-links-target}}
+
+... will result in the following html markup:
+
+    <div class="set-links-target">
+      <a href="http://github.com" target="_blank">GitHub</a>
+    </div>
 
 ### Services
 
