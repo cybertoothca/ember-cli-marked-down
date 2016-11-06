@@ -5,8 +5,6 @@ module.exports = {
   },
   afterInstall: function (/*options*/) {
     this.addAddonToProject('ember-getowner-polyfill')
-      .then(function () {
-        return this.addBowerPackageToProject('showdown');
-      });
+      .then(() => this.addBowerPackageToProject('showdown'));
   }
 };
