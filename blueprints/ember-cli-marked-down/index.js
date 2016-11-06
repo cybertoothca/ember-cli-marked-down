@@ -4,6 +4,9 @@ module.exports = {
   normalizeEntityName: function () {
   },
   afterInstall: function (/*options*/) {
-    return this.addBowerPackageToProject('showdown');
+    this.addAddonToProject('ember-getowner-polyfill')
+      .then(function () {
+        return this.addBowerPackageToProject('showdown');
+      });
   }
 };

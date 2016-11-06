@@ -1,4 +1,4 @@
-# ember-cli-marked-down [![GitHub version](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down) ![](http://embadge.io/v1/badge.svg?range=%5E2.3.0)
+# ember-cli-marked-down [![GitHub version](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down) ![](https://embadge.io/v1/badge.svg?start=1.13.0)
 
 [![npm version](https://badge.fury.io/js/ember-cli-marked-down.svg)](https://badge.fury.io/js/ember-cli-marked-down) [![CircleCI](https://circleci.com/gh/cybertoothca/ember-cli-marked-down.svg?style=shield)](https://circleci.com/gh/cybertoothca/ember-cli-marked-down) [![Code Climate](https://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](https://codeclimate.com/github/cybertoothca/ember-cli-marked-down) ![Dependencies](https://david-dm.org/cybertoothca/ember-cli-marked-down.svg) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down) [![License](https://img.shields.io/npm/l/ember-cli-marked-down.svg)](LICENSE.md)
 
@@ -54,7 +54,7 @@ section below._
 
 ## Requirements
 
-* Ember >= __2.3.0__
+* Ember >= 1.13.0
 * Ember CLI
 
 ## Installation
