@@ -30,14 +30,26 @@ This addon supplies the following:
 ### Helpers
 
 * `{{marked-down}}` - the helper that produces html from the supplied 
-markdown.  You can override [Showdown's options](https://github.com/showdownjs/showdown#valid-options) by passing named
+markdown.  Override [Showdown's options](https://github.com/showdownjs/showdown#valid-options) by passing named
 arguments to the helper.
 
 ### Components
 
 * `{{set-links-target}}` - a component that wraps some html, looks for
-any `<a>`nchor elements and sets their `target` attribute to the target
-value that you specify.
+any `<a>`nchor elements and sets their `target` attribute to the 
+specified target value.
+
+This component complements the `{{marked-down}}` helper such that
+any html generated from some markdown source can be wrapped with this
+component and have all of the links targets set.  Here's an example:
+
+    {{#set-links-target}}
+      {{marked-down "Some link: <a href="http://github.com">GitHub</a>"}}
+    {{/set-links-target}}
+
+... will make sure that when the GitHub link is rendered from the 
+markdown, its target attribute will be set to _blank.  Read more about
+this component below.
 
 ### Services
 
@@ -63,14 +75,19 @@ The following will install this addon:
 
     $ ember install ember-cli-marked-down
 
-This will install the Showdown library in your bower.json and also
-make sure that it is added to your application and available at test
-and runtime.
+The Showdown library will be installed in the Ember application and
+should appear in the bower.json. This library is added to the
+application and is available at test and runtime.
+
+In order to support `Ember.getOwner(...)` calls the 
+`ember-getowner-polyfill` addon is also installed to make sure that
+this addon can work for Ember applications going back to versions
+1.13.0+.
 
 ### ShowdownJS Configuration (Optional)
 
 Inside the Ember application's `config/environment.js`, set 
-ShowdownJS' global options according to your preference.  Use the 
+ShowdownJS' global option preferences.  Use the 
 following example as a template:
 
     // config/environment.js
@@ -201,17 +218,18 @@ have a target.
 
 The component by default will not assign the `target` attribute to 
 links that it finds that belong to the host that the application is
-running in.  That is to say, if your app is running at 
+running in.  That is to say, if an app is running at 
 http://example.com and the component find a link that starts with
 `http://example.com`, then that link will NOT have a target attribute
-assigned.  You can override this default behaviour by setting the
+assigned.  This default behaviour can be overridden by setting the
 `excludeSelfLinks?` argument to `false`.
 
 ##### Arguments
 
 * `excludeSelfLinks?` - when `true` (DEFAULT) any links that are found
-in the component's yield that share the same host url as your site will
-NOT have the target attribute assigned.
+in the component's yield that share the same host url as the Ember
+application will NOT have the target attribute assigned.  When `false`
+all found links will have the target attribute assigned.
 * `targetValue` - one of the valid target values that can be passed to
 the `target` attribute of an anchor/link element.  One of: `_blank`, 
 `_self`, `_parent`, `_top`, or the name of a frame in the page.  See
