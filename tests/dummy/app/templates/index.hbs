@@ -27,3 +27,13 @@ Before some script tag...
 ...after the script tag
 "
 }}
+
+<h2>Wrapped With `set-links-target`</h2>
+
+{{#set-links-target}}
+  {{marked-down "
+  Check out this link, it should open in a `_blank` tab/window:
+
+  http://github.com
+  "}}
+{{/set-links-target}}
