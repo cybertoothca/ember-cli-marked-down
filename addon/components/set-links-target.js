@@ -19,8 +19,8 @@ export default Ember.Component.extend({
    * Determines the `window.document.location.origin` because PhantomJS does not have a notion of the location object.
    */
   _origin: Ember.computed(function () {
-    if (document) {
-      return window.document.location.origin;
+    if (Ember.isPresent(document)) {
+      return document.location.origin;
     }
     return 'http://localhost:7357';
   }),
