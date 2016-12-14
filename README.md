@@ -315,6 +315,9 @@ look something like this: `"ember-cli-marked-down": "*"`.  Now
 when/if you execute `npm install` on this _other_ project it 
 will know to look for the linked addon rather than fetch it from
 the central repository.
+1. Lastly, in the _other_ Ember project run the blueprint for the
+ `ember-cli-marked-down` addon by executing: `ember g ember-cli-marked-down`.  This
+will install the appropriate Ember Addons and Bower dependencies.
 
 ## Unlinking
 
