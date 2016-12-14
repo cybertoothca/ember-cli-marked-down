@@ -1,6 +1,6 @@
-# ember-cli-marked-down [![GitHub version](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](https://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down) ![](https://embadge.io/v1/badge.svg?start=1.13.0)
+# ember-cli-marked-down [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down) ![](http://embadge.io/v1/badge.svg?start=1.13.0)
 
-[![npm version](https://badge.fury.io/js/ember-cli-marked-down.svg)](https://badge.fury.io/js/ember-cli-marked-down) [![CircleCI](https://circleci.com/gh/cybertoothca/ember-cli-marked-down.svg?style=shield)](https://circleci.com/gh/cybertoothca/ember-cli-marked-down) [![Code Climate](https://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](https://codeclimate.com/github/cybertoothca/ember-cli-marked-down) ![Dependencies](https://david-dm.org/cybertoothca/ember-cli-marked-down.svg) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down) [![License](https://img.shields.io/npm/l/ember-cli-marked-down.svg)](LICENSE.md)
+[![npm version](http://badge.fury.io/js/ember-cli-marked-down.svg)](http://badge.fury.io/js/ember-cli-marked-down) [![CircleCI](http://circleci.com/gh/cybertoothca/ember-cli-marked-down.svg?style=shield)](http://circleci.com/gh/cybertoothca/ember-cli-marked-down) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down) ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-marked-down.svg) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down) [![License](http://img.shields.io/npm/l/ember-cli-marked-down.svg)](LICENSE.md)
 
 This addon provides a means to generate html formatted markup from 
 _markdown_ source.  The [ShowdownJS](https://github.com/showdownjs/showdown) 
@@ -67,6 +67,9 @@ section below._
 ## Requirements
 
 * Ember >= 1.13.0
+  * In order to support 1.13.0 this addon automatically installs the `ember-getowner-polyfill`.  **Ember applications
+  that are already running 2.3 or later should simply remove the `ember-getowner-polyfill` dependency from their
+  `package.json`.**  [Check out the `ember-getowner-polyfill` addon for more information](https://github.com/rwjblue/ember-getowner-polyfill#applications).
 * Ember CLI
 
 ## Installation
