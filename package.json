@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-marked-down",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This addon provides a means to generate html formatted markup from markdown source.  The ShowdownJS (https://github.com/showdownjs/showdown) library is leveraged to generate the html and this addon has been designed to be configured at the application's `environment.js` level.",
   "directories": {
     "doc": "doc",
