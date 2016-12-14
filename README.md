@@ -326,4 +326,4 @@ command (that can be run anywhere):
 `npm uninstall -g ember-cli-marked-down`
 1. Remove the reference to the `ember-cli-marked-down` 
 in your _other_ project's `package.json`.
-1. Run an `npm prune` from the root of your _other_ project's command line.
+1. Run an `npm prune` and `bower prune` from the root of your _other_ project's command line.

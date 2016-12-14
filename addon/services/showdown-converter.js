@@ -1,6 +1,5 @@
 /* global showdown */
 import Ember from 'ember';
-import getOwner from 'ember-getowner-polyfill';
 
 export default Ember.Service.extend({
   /**
@@ -11,8 +10,7 @@ export default Ember.Service.extend({
   }),
   _setShowdownGlobals() {
     // grab the application configuration
-    // NOTE: Ember.getOwner(...) is only available in Ember 2.3+
-    const config = getOwner(this).resolveRegistration('config:environment');
+    const config = Ember.getOwner(this).resolveRegistration('config:environment');
     // set showdown global settings from the environment
     if (Ember.isEmpty(config.APP.showdown)) {
       Ember.Logger.info('The `ember-cli-marked-down` addon will use ShowdownJS defaults to create the Converters.');
