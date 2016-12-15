@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{#link-to "index" classNames="navbar-brand"}}
+        ember-data-marked-down
+      {{/link-to}}
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://github.com/cybertoothca/ember-cli-marked-down" target="_blank">
+            <i class="fa fa-github"></i>
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://www.npmjs.com/package/ember-cli-marked-down" target="_blank">
+            npm
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{{outlet}}

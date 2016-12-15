@@ -37,13 +37,10 @@ export default Ember.Component.extend({
       const link = Ember.$(element);
       // are we excluding links to self?
       if (Ember.isPresent(link.attr('href')) &&
-        // link.attr('href').startsWith(origin) &&
         // because startsWith is ES6 and not supported by some browsers...using underscore.string
         s.startsWith(link.attr('href'), origin) &&
-        // link.attr('href').substring(0, origin.length) === origin &&
         excludeSelfLinks) {
-        link.attr('data-substring', link.attr('href').substring(0, origin.length));
-        return false;
+        return;
       }
       // got this far, then apply a target if it hasn't already got one
       if (Ember.isEmpty(link.attr('target'))) {

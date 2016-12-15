@@ -13,6 +13,10 @@ and the [ShowdownJS](https://github.com/showdownjs/showdown) library
 was authored by John Fraser and is 
 a _vanilla_ port of Gruber's original works.
 
+## Demo
+
+[Check out the demo application](http://ember-cli-marked-down.cybertooth.io).
+
 ## Cross-Side Scripting (XSS) Vulnerability
 
 Notice: this addon will be converting _Markdown_ source in the 

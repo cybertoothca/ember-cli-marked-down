@@ -6,6 +6,8 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "showdown": "^1.4.3",
-    "underscore.string": "^3.3.4"
+    "underscore.string": "^3.3.4",
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0"
   }
 }
