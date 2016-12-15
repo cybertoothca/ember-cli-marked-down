@@ -331,3 +331,16 @@ command (that can be run anywhere):
 1. Remove the reference to the `ember-cli-marked-down` 
 in your _other_ project's `package.json`.
 1. Run an `npm prune` and `bower prune` from the root of your _other_ project's command line.
+
+# Deploying The Dummy Application
+
+Make sure your `~/.aws/credentials` file has a profile named _cybertooth_ 
+with a valid key and secret,
+
+    [cybertooth]
+    aws_access_key_id = <KEY>
+    aws_secret_access_key = <SECRET>
+
+Deploy by invoking the following command: `ember deploy production`
+
+Confirm your changes are showing up in our S3 container: http://ember-cli-marked-down.cybertooth.io/
