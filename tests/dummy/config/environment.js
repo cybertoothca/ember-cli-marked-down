@@ -5,6 +5,20 @@ module.exports = function (environment) {
     modulePrefix: 'dummy',
     environment: environment,
     baseURL: '/',
+    /**
+     * For deployment to AWS S3 need a redirection rule:
+     * <RoutingRules>
+     *   <RoutingRule>
+     *     <Condition>
+     *       <HttpErrorCodeReturnedEquals>404</HttpErrorCodeReturnedEquals>
+     *     </Condition>
+     *     <Redirect>
+     *       <HostName>ember-cli-marked-down.cybertooth.io</HostName>
+     *       <ReplaceKeyPrefixWith>#/</ReplaceKeyPrefixWith>
+     *     </Redirect>
+     *   </RoutingRule>
+     * </RoutingRules>
+     */
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

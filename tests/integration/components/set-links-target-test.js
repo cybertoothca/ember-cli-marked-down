@@ -44,11 +44,16 @@ test('when excludeSelfLinks is true, the target is not applied to such links', f
   assert.equal(this.$('a').attr('target'), undefined);
 });
 
-test('when determining whether my startsWith', function (assert) {
+test('when the target is set for one of several links', function (assert) {
   this.render(hbs`
     {{#set-links-target}}
-      {{marked-down "[Some Link](http://localhost:7357/some/path)"}}
+      {{marked-down "
+[Some Link That Opens In Same Tab](http://localhost:7357/some/path)
+
+[Another Link That Will Open In A New Tab](https://github.com/cybertoothca/ember-cli-marked-down)
+"}}
     {{/set-links-target}}
   `);
-  assert.equal(this.$('a').attr('target'), undefined);
+  assert.equal(this.$('a:eq(0)').attr('target'), undefined);
+  assert.equal(this.$('a:eq(1)').attr('target'), '_blank');
 });

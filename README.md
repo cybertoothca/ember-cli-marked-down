@@ -13,6 +13,10 @@ and the [ShowdownJS](https://github.com/showdownjs/showdown) library
 was authored by John Fraser and is 
 a _vanilla_ port of Gruber's original works.
 
+## Demo
+
+[Check out the demo application](http://ember-cli-marked-down.cybertooth.io).
+
 ## Cross-Side Scripting (XSS) Vulnerability
 
 Notice: this addon will be converting _Markdown_ source in the 
@@ -327,3 +331,16 @@ command (that can be run anywhere):
 1. Remove the reference to the `ember-cli-marked-down` 
 in your _other_ project's `package.json`.
 1. Run an `npm prune` and `bower prune` from the root of your _other_ project's command line.
+
+# Deploying The Dummy Application
+
+Make sure your `~/.aws/credentials` file has a profile named _cybertooth_ 
+with a valid key and secret,
+
+    [cybertooth]
+    aws_access_key_id = <KEY>
+    aws_secret_access_key = <SECRET>
+
+Deploy by invoking the following command: `ember deploy production`
+
+Confirm your changes are showing up in our S3 container: http://ember-cli-marked-down.cybertooth.io/
