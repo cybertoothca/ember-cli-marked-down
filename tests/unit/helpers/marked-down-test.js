@@ -16,6 +16,22 @@ test('when filtering xss attack', function (assert) {
     '<p>P</p>', 'The script is not executed and has been stripped from the markup.');
 });
 
+test('when param has one element that is null', function (assert) {
+  assert.equal(markedDown([undefined]), '');
+});
+
+test('when param has one element that is null', function (assert) {
+  assert.equal(markedDown([null]), '');
+});
+
+test('when param is not present', function (assert) {
+  assert.equal(markedDown(), '');
+});
+
+test('when param is undefined', function (assert) {
+  assert.equal(markedDown(undefined), '');
+});
+
 test('when param is null', function (assert) {
   assert.equal(markedDown(null), '');
 });

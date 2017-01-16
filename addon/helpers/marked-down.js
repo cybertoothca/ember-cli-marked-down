@@ -2,7 +2,7 @@
 import Ember from 'ember';
 
 export function markedDown(src, hash) {
-  if (Ember.isEmpty(src)) {
+  if (Ember.isEmpty(src) || Ember.isBlank(src[0])) {
     return '';
   }
   const converter = new showdown.Converter(hash);
