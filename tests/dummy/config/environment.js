@@ -45,6 +45,11 @@ module.exports = function (environment) {
          */
         noHeaderId: false,
         /**
+         * (boolean) [default false] Generate header ids compatible with github style (spaces are
+         * replaced with dashes and a bunch of non alphanumeric chars are removed) (since showdown-1.5.5).
+         */
+        ghCompatibleHeaderId: false,
+        /**
          * (string/boolean) [default false] Add a prefix to the generated header ids. Passing a
          * string will prefix that string to the header id. Setting to true will add a generic 'section' prefix.
          */
@@ -60,20 +65,26 @@ module.exports = function (environment) {
         /**
          * (boolean) [default false] Turning this on will enable GFM autolink style.
          */
-        simplifiedAutoLink: true,
+        simplifiedAutoLink: false,
+        /**
+         * (boolean) [default false] This option excludes trailing punctuation from
+         * autolinking urls. Punctuation excluded: . ! ? ( ). Only applies if
+         * simplifiedAutoLink option is set to true.
+         */
+        excludeTrailingPunctuationFromURLs: false,
         /**
          * (boolean) [default false] Turning this on will stop showdown from interpreting underscores
          * in the middle of words as <em> and <strong> and instead treat them as literal underscores.
          */
-        literalMidWordUnderscores: true,
+        literalMidWordUnderscores: false,
         /**
          * (boolean) [default false] Enable support for strikethrough syntax.
          */
-        strikethrough: true,
+        strikethrough: false,
         /**
          * (boolean) [default false] Enable support for tables syntax.
          */
-        tables: true,
+        tables: false,
         /**
          * (boolean) [default false] If enabled adds an id property to table headers tags.
          */
@@ -94,7 +105,28 @@ module.exports = function (environment) {
          * (boolean) [default false] Tries to smartly fix indentation problems related to es6
          * template strings in the midst of indented code.
          */
-        smartIndentationFix: false
+        smartIndentationFix: false,
+        /**
+         * (boolean) [default false] Disables the requirement of indenting sublists by
+         * 4 spaces for them to be nested, effectively reverting to the old behavior where
+         * 2 or 3 spaces were enough. (since showdown-1.5.0).
+         */
+        disableForced4SpacesIndentedSublists: false,
+        /**
+         * (boolean) [default false] Parses line breaks as like GitHub does, without
+         * needing 2 spaces at the end of the line (since showdown-1.5.1).
+         */
+        simpleLineBreaks: false,
+        /**
+         * (boolean) [default false] Makes adding a space between # and the header text
+         * mandatory (since showdown-1.5.3).
+         */
+        requireSpaceBeforeHeadingText: false,
+        /**
+         * (boolean) [default false] Enables github @mentions, which link to the username
+         * mentioned (since showdown-1.6.0).
+         */
+        ghMentions: false
       }
     }
   };

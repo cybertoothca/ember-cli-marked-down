@@ -1,4 +1,4 @@
-# ember-cli-marked-down [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down) ![](http://embadge.io/v1/badge.svg?start=1.13.0)
+# ember-cli-marked-down [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down) ![](http://embadge.io/v1/badge.svg?start=1.13.0) ![https://github.com/showdownjs/showdown](https://img.shields.io/badge/showdown-1.6.x-orange.svg)
 
 [![npm version](http://badge.fury.io/js/ember-cli-marked-down.svg)](http://badge.fury.io/js/ember-cli-marked-down) [![CircleCI](http://circleci.com/gh/cybertoothca/ember-cli-marked-down.svg?style=shield)](http://circleci.com/gh/cybertoothca/ember-cli-marked-down) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down) ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-marked-down.svg) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down) [![License](http://img.shields.io/npm/l/ember-cli-marked-down.svg)](LICENSE.md)
 
@@ -119,6 +119,11 @@ following example as a template:
              */
             noHeaderId: false,
             /**
+             * (boolean) [default false] Generate header ids compatible with github style (spaces are 
+             * replaced with dashes and a bunch of non alphanumeric chars are removed) (since showdown-1.5.5).
+             */
+            ghCompatibleHeaderId: false,
+            /**
              * (string/boolean) [default false] Add a prefix to the generated header ids. Passing a
              * string will prefix that string to the header id. Setting to true will add a generic 'section' prefix.
              */
@@ -135,6 +140,12 @@ following example as a template:
              * (boolean) [default false] Turning this on will enable GFM autolink style.
              */
             simplifiedAutoLink: false,
+            /**
+             * (boolean) [default false] This option excludes trailing punctuation from 
+             * autolinking urls. Punctuation excluded: . ! ? ( ). Only applies if 
+             * simplifiedAutoLink option is set to true.
+             */
+            excludeTrailingPunctuationFromURLs: false,
             /**
              * (boolean) [default false] Turning this on will stop showdown from interpreting underscores
              * in the middle of words as <em> and <strong> and instead treat them as literal underscores.
@@ -168,7 +179,28 @@ following example as a template:
              * (boolean) [default false] Tries to smartly fix indentation problems related to es6
              * template strings in the midst of indented code.
              */
-            smartIndentationFix: false
+            smartIndentationFix: false,
+            /**
+             * (boolean) [default false] Disables the requirement of indenting sublists by 
+             * 4 spaces for them to be nested, effectively reverting to the old behavior where 
+             * 2 or 3 spaces were enough. (since showdown-1.5.0).
+             */
+            disableForced4SpacesIndentedSublists: false,
+            /**
+             * (boolean) [default false] Parses line breaks as like GitHub does, without 
+             * needing 2 spaces at the end of the line (since showdown-1.5.1).
+             */
+            simpleLineBreaks: false,
+            /**
+             * (boolean) [default false] Makes adding a space between # and the header text 
+             * mandatory (since showdown-1.5.3).
+             */
+            requireSpaceBeforeHeadingText: false,
+            /**
+             * (boolean) [default false] Enables github @mentions, which link to the username 
+             * mentioned (since showdown-1.6.0).
+             */
+            ghMentions: false
           }
         }
       };

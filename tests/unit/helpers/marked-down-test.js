@@ -69,7 +69,8 @@ test('when passing markdown option to helper', function (assert) {
 });
 
 test('when passing an invalid markdown option to helper', function (assert) {
-  assert.equal(markedDown(['## Heading 2'], {noHeaderId: true, malarkey: true}).toHTML(), '<h2>Heading 2</h2>');
+  assert.equal(markedDown(['## Heading 2'], {noHeaderId: false, malarkey: true}).toHTML(),
+    '<h2 id="heading2">Heading 2</h2>');
 });
 
 
