@@ -19,19 +19,8 @@ export default Ember.Service.extend({
     }
     const showdownConfig = Ember.Object.create(config.APP.showdown);
     // setting details can be found here: https://github.com/showdownjs/showdown#valid-options
-    showdown.setOption('omitExtraWLInCodeBlocks', showdownConfig.getWithDefault('omitExtraWLInCodeBlocks', false));
-    showdown.setOption('noHeaderId', showdownConfig.getWithDefault('noHeaderId', false));
-    showdown.setOption('prefixHeaderId', showdownConfig.getWithDefault('prefixHeaderId', false));
-    showdown.setOption('parseImgDimensions', showdownConfig.getWithDefault('parseImgDimensions', false));
-    showdown.setOption('headerLevelStart', showdownConfig.getWithDefault('headerLevelStart', 1));
-    showdown.setOption('simplifiedAutoLink', showdownConfig.getWithDefault('simplifiedAutoLink', false));
-    showdown.setOption('literalMidWordUnderscores', showdownConfig.getWithDefault('literalMidWordUnderscores', false));
-    showdown.setOption('strikethrough', showdownConfig.getWithDefault('strikethrough', false));
-    showdown.setOption('tables', showdownConfig.getWithDefault('tables', false));
-    showdown.setOption('tablesHeaderId', showdownConfig.getWithDefault('tablesHeaderId', false));
-    showdown.setOption('ghCodeBlocks', showdownConfig.getWithDefault('ghCodeBlocks', true));
-    showdown.setOption('tasklists', showdownConfig.getWithDefault('tasklists', false));
-    showdown.setOption('smoothLivePreview', showdownConfig.getWithDefault('smoothLivePreview', false));
-    showdown.setOption('smartIndentationFix', showdownConfig.getWithDefault('smartIndentationFix', false));
+    Object.keys(showdownConfig).forEach((key) => {
+      showdown.setOption(key, showdownConfig.get(key));
+    });
   }
 });
