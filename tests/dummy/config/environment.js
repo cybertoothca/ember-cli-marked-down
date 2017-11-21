@@ -1,29 +1,20 @@
-/* jshint node: true */
+/* eslint-env node */
+'use strict';
 
 module.exports = function (environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'dummy',
-    environment: environment,
-    baseURL: '/',
-    /**
-     * For deployment to AWS S3 need a redirection rule:
-     * <RoutingRules>
-     *   <RoutingRule>
-     *     <Condition>
-     *       <HttpErrorCodeReturnedEquals>404</HttpErrorCodeReturnedEquals>
-     *     </Condition>
-     *     <Redirect>
-     *       <HostName>ember-cli-marked-down.cybertooth.io</HostName>
-     *       <ReplaceKeyPrefixWith>#/</ReplaceKeyPrefixWith>
-     *     </Redirect>
-     *   </RoutingRule>
-     * </RoutingRules>
-     */
+    environment,
+    rootURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
       }
     },
 
@@ -141,7 +132,6 @@ module.exports = function (environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -152,7 +142,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-
+    // comment for eslint to shut up
   }
 
   return ENV;

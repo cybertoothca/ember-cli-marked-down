@@ -13,6 +13,13 @@ and the [ShowdownJS](https://github.com/showdownjs/showdown) library
 was authored by John Fraser and is 
 a _vanilla_ port of Gruber's original works.
 
+## `ember-getowner-polyfill`
+
+**Ember-2.3 is supported out of the box.  Any applications running 2.2 or lower must install the
+`ember-getowner-polyfill` addon.**
+
+See the Requirements section below.
+
 ## Demo
 
 [Check out the demo application](http://ember-cli-marked-down.cybertooth.io).
@@ -71,9 +78,9 @@ section below._
 ## Requirements
 
 * Ember >= 1.13.0
-  * In order to support 1.13.0 this addon automatically installs the `ember-getowner-polyfill`.  **Ember applications
-  that are already running 2.3 or later should simply remove the `ember-getowner-polyfill` dependency from their
-  `package.json`.**  [Check out the `ember-getowner-polyfill` addon for more information](https://github.com/rwjblue/ember-getowner-polyfill#applications).
+  * CAVEAT: Supporting versions below Ember-2.3 requires that you manually install the getOwner polyfill.
+  For example `ember install ember-getowner-polyfill` if you are running an Ember application earlier
+  that version 2.3. 
 * Ember CLI
 
 ## Installation
@@ -81,15 +88,11 @@ section below._
 The following will install this addon:
 
     $ ember install ember-cli-marked-down
+    $ ember install ember-getowner-polyfill  # ONLY FOR Ember-1.13 -> Ember-2.2 ...OTHERWISE IGNORE
 
 The Showdown library will be installed in the Ember application and
 should appear in the bower.json. This library is added to the
 application and is available at test and runtime.
-
-In order to support `Ember.getOwner(...)` calls the 
-`ember-getowner-polyfill` addon is also installed to make sure that
-this addon can work for Ember applications going back to versions
-1.13.0+.
 
 ### ShowdownJS Configuration (Optional)
 
