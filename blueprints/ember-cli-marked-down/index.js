@@ -1,4 +1,4 @@
-/*jshint node:true*/
+/* eslint-env node */
 module.exports = {
   description: "The blueprint that installs this addon's required bower dependencies.",
   normalizeEntityName: function () {
