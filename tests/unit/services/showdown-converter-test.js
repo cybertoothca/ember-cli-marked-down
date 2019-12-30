@@ -1,5 +1,5 @@
-/* global showdown */
 import { moduleFor, test } from 'ember-qunit';
+import showdown from 'showdown';
 
 moduleFor('service:showdown-converter', 'Unit | Service | showdown converter', {
   // Specify the other units that are required for this test.

@@ -1,4 +1,3 @@
-/* eslint-env node */
 module.exports = {
   test_page: 'tests/index.html?hidepassed',
   disable_watching: true,
@@ -8,12 +7,18 @@ module.exports = {
   launch_in_dev: [
     'Chrome'
   ],
+  browser_start_timeout: 60,
   browser_args: {
-    Chrome: [
-      '--headless',
-      '--window-size=1440,900',
-      '--disable-gpu',
-      '--remote-debugging-port=9222'
-    ]
+    Chrome: {
+      mode: 'ci',
+      args: [
+        '--disable-web-security',
+        '--disable-gpu',
+        '--headless',
+        '--no-sandbox',
+        '--remote-debugging-port=0',
+        '--window-size=1440,900'
+      ].filter(Boolean)
+    }
   }
 };

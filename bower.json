@@ -1,8 +1,6 @@
 {
   "name": "ember-cli-marked-down",
   "dependencies": {
-    "showdown": "^1.4.3",
-    "underscore.string": "^3.3.4",
     "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0"
   }

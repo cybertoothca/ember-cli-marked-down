@@ -1,5 +1,5 @@
-/* global showdown */
 import Ember from 'ember';
+import showdown from 'showdown';
 
 export default Ember.Service.extend({
   /**

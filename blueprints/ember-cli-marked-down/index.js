@@ -1,16 +1,21 @@
 /* eslint-env node */
 module.exports = {
-  description: "The blueprint that installs this addon's required bower dependencies.",
-  normalizeEntityName: function () {
-  },
-  afterInstall: function (/*options*/) {
-    var self = this;
-    return self.addAddonToProject('ember-getowner-polyfill')
-      .then(function () {
-        return self.addBowerPackagesToProject([
-          {name: 'showdown'},
-          {name: 'underscore.string'}
-        ]);
-      });
+  description: 'Ember `marked-down` helper blueprint.',
+
+  normalizeEntityName() {
+  }, // no-op since we're just adding dependencies
+
+  afterInstall(/* options*/) {
+    return this.addAddonsToProject({
+      packages: [
+        { name: 'ember-auto-import' },
+        { name: 'ember-getowner-polyfill' }
+      ]
+    }).then(() => {
+      return this.addPackagesToProject([
+        { name: 'lodash.startswith' },
+        { name: 'showdown' }
+      ]);
+    });
   }
 };
