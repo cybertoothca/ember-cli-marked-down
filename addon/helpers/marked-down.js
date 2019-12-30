@@ -1,5 +1,5 @@
-/* global showdown */
 import Ember from 'ember';
+import showdown from 'showdown';
 
 export function markedDown(src, hash) {
   if (Ember.isEmpty(src) || Ember.isBlank(src[0])) {

@@ -1,5 +1,5 @@
-/* globals s */
 import Ember from 'ember';
+import startsWith from 'lodash.startswith';
 import layout from '../templates/components/set-links-target';
 
 export default Ember.Component.extend({
@@ -19,7 +19,7 @@ export default Ember.Component.extend({
   /**
    * Determines the `window.document.location.origin` because PhantomJS does not have a notion of the location object.
    */
-  _origin: Ember.computed(function () {
+  _origin: Ember.computed(function() {
     if (Ember.isPresent(document)) {
       return document.location.origin;
     }
@@ -28,7 +28,7 @@ export default Ember.Component.extend({
   /**
    * Sets any `<a>` (link) `target` attributes to whatever we've specified in the `targetValue` property.
    */
-  _setTarget: Ember.on('didInsertElement', function () {
+  _setTarget: Ember.on('didInsertElement', function() {
     const excludeSelfLinks = this.get('excludeSelfLinks?');
     const origin = this.get('_origin');
     const targetValue = this.get('targetValue');
@@ -36,10 +36,7 @@ export default Ember.Component.extend({
     this.$('a').each((index, element) => {
       const link = Ember.$(element);
       // are we excluding links to self?
-      if (Ember.isPresent(link.attr('href')) &&
-        // because startsWith is ES6 and not supported by some browsers...using underscore.string
-        s.startsWith(link.attr('href'), origin) &&
-        excludeSelfLinks) {
+      if (Ember.isPresent(link.attr('href')) && startsWith(link.attr('href'), origin) && excludeSelfLinks) {
         return;
       }
       // got this far, then apply a target if it hasn't already got one
