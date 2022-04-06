@@ -1,6 +1,6 @@
-# ember-cli-marked-down [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-marked-down) ![](http://embadge.io/v1/badge.svg?start=1.13.0) ![https://github.com/showdownjs/showdown](https://img.shields.io/badge/showdown-1.6.x-orange.svg)
+# ember-cli-marked-down
 
-[![npm version](http://badge.fury.io/js/ember-cli-marked-down.svg)](http://badge.fury.io/js/ember-cli-marked-down) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down)
+[![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down)
 
 This addon provides a means to generate html formatted markup from
 _markdown_ source. The [ShowdownJS](https://github.com/showdownjs/showdown)
