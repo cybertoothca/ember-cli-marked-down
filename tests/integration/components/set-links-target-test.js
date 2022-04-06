@@ -37,23 +37,31 @@ test("when excludeSelfLinks is false, the target is applied to local links", fun
   assert.equal(this.$("a").attr("target"), "_blank");
 });
 
-test("when excludeSelfLinks is true, the target is not applied to such links", function (assert) {
+test("when excludeSelfLinks defaults to true, the target is not applied to such links", function (assert) {
+  this.set("origin", window.document.location.origin);
+  this.render(hbs`
+    {{#set-links-target}}
+      {{marked-down (concat "[Some Link](" origin "/some/path)")}}
+    {{/set-links-target}}
+  `);
+  assert.equal(this.$("a").attr("target"), undefined);
+});
+
+test("when excludeSelfLinks is explicitly set to true, the target is not applied to such links", function (assert) {
+  this.set("origin", window.document.location.origin);
   this.render(hbs`
     {{#set-links-target excludeSelfLinks?=true}}
-      {{marked-down "[Some Link](http://localhost:7357/some/path)"}}
+      {{marked-down (concat "[Some Link](" origin "/some/path)")}}
     {{/set-links-target}}
   `);
   assert.equal(this.$("a").attr("target"), undefined);
 });
 
 test("when the target is set for one of several links", function (assert) {
+  this.set("origin", window.document.location.origin);
   this.render(hbs`
     {{#set-links-target}}
-      {{marked-down "
-[Some Link That Opens In Same Tab](http://localhost:7357/some/path)
-
-[Another Link That Will Open In A New Tab](https://github.com/cybertoothca/ember-cli-marked-down)
-"}}
+      {{marked-down (concat "[Some Link That Opens In Same Tab](" origin "/some/path) [Another Link That Will Open In A New Tab](https://github.com/cybertoothca/ember-cli-marked-down)")}}
     {{/set-links-target}}
   `);
   assert.equal(this.$("a:eq(0)").attr("target"), undefined);

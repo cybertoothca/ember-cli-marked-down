@@ -2,7 +2,6 @@ import $ from "jquery";
 import startsWith from "lodash.startswith";
 
 import Component from "@ember/component";
-import { computed } from "@ember/object";
 import { isEmpty, isPresent } from "@ember/utils";
 
 import layout from "../templates/components/set-links-target";
@@ -22,20 +21,11 @@ export default Component.extend({
    */
   targetValue: "_blank",
   /**
-   * Determines the `window.document.location.origin` because PhantomJS does not have a notion of the location object.
-   */
-  _origin: computed(function () {
-    if (isPresent(document)) {
-      return document.location.origin;
-    }
-    return "http://localhost:7357";
-  }),
-  /**
    * Sets any `<a>` (link) `target` attributes to whatever we've specified in the `targetValue` property.
    */
   didInsertElement() {
     const excludeSelfLinks = this.get("excludeSelfLinks?");
-    const origin = this.get("_origin");
+    const origin = window.document.location.origin;
     const targetValue = this.get("targetValue");
     // for each anchor check if we should set the target
     this.$("a").each((index, element) => {
