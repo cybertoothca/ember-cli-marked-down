@@ -1,12 +1,16 @@
-import Ember from 'ember';
-import showdown from 'showdown';
+import showdown from "showdown";
+
+import { helper as buildHelper } from "@ember/component/helper";
+import EmberObject from "@ember/object";
+import { htmlSafe } from "@ember/template";
+import { isBlank, isEmpty } from "@ember/utils";
 
 export function markedDown(src, hash) {
-  if (Ember.isEmpty(src) || Ember.isBlank(src[0])) {
-    return '';
+  if (isEmpty(src) || isBlank(src[0])) {
+    return "";
   }
-  const converter = new showdown.Converter(Ember.Object.create(hash));
-  return Ember.String.htmlSafe(converter.makeHtml(src[0].toString()));
+  const converter = new showdown.Converter(EmberObject.create(hash || {}));
+  return htmlSafe(converter.makeHtml(src[0].toString()));
 }
 
-export default Ember.Helper.helper(markedDown);
+export default buildHelper(markedDown);
