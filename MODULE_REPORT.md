@@ -3,11 +3,11 @@
 
 **Global**: `Ember.Logger`
 
-**Location**: `addon/services/showdown-converter.js` at line 16
+**Location**: `addon/services/showdown-converter.js` at line 21
 
 ```js
     // set showdown global settings from the environment
-    if (Ember.isEmpty(config.APP.showdown)) {
+    if (isEmpty(config.APP.showdown)) {
       Ember.Logger.info('The `ember-cli-marked-down` addon will use ShowdownJS defaults to create the Converters.');
       Ember.Logger.info('If you want to customize ShowdownJS behaviour, please see the ember-cli-marked-down README: https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional');
       return;
@@ -17,10 +17,10 @@
 
 **Global**: `Ember.Logger`
 
-**Location**: `addon/services/showdown-converter.js` at line 17
+**Location**: `addon/services/showdown-converter.js` at line 22
 
 ```js
-    if (Ember.isEmpty(config.APP.showdown)) {
+    if (isEmpty(config.APP.showdown)) {
       Ember.Logger.info('The `ember-cli-marked-down` addon will use ShowdownJS defaults to create the Converters.');
       Ember.Logger.info('If you want to customize ShowdownJS behaviour, please see the ember-cli-marked-down README: https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional');
       return;
