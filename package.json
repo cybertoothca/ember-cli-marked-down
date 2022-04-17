@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-marked-down",
-  "version": "3.8.0",
+  "version": "3.9.0",
   "description": "This addon provides a means to generate html formatted markup from markdown source.",
   "keywords": [
     "ember-addon",
