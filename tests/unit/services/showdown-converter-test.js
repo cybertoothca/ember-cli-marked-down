@@ -3,7 +3,7 @@ import showdown from 'showdown';
 
 moduleFor('service:showdown-converter', 'Unit | Service | showdown converter', {
   // Specify the other units that are required for this test.
-  needs: ['config:environment']
+  needs: ['config:environment'],
 });
 
 test('when loaded all the showdown defaults are set accordingly', function (assert) {
@@ -38,7 +38,7 @@ test('when loaded the converter defaults are set accordingly', function (assert)
   const converter = new showdown.Converter({
     noHeaderId: true,
     excludeTrailingPunctuationFromURLs: true,
-    tables: true
+    tables: true,
   });
   assert.notOk(converter.getOption('omitExtraWLInCodeBlocks'));
   assert.ok(converter.getOption('noHeaderId'));

@@ -19,13 +19,15 @@ export default Service.extend({
     // set showdown global settings from the environment
     if (isEmpty(config.APP.showdown)) {
       Ember.Logger.info('The `ember-cli-marked-down` addon will use ShowdownJS defaults to create the Converters.');
-      Ember.Logger.info('If you want to customize ShowdownJS behaviour, please see the ember-cli-marked-down README: https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional');
+      Ember.Logger.info(
+        'If you want to customize ShowdownJS behaviour, please see the ember-cli-marked-down README: https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional'
+      );
       return;
     }
     const showdownConfig = EmberObject.create(config.APP.showdown);
     // setting details can be found here: https://github.com/showdownjs/showdown#valid-options
-    Object.keys(showdownConfig).forEach((key) => {
+    Object.keys(showdownConfig).forEach(key => {
       showdown.setOption(key, showdownConfig.get(key));
     });
-  }
+  },
 });

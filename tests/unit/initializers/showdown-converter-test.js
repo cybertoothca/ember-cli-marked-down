@@ -11,7 +11,7 @@ module('Unit | Initializer | showdown converter', {
       application = Application.create();
       application.deferReadiness();
     });
-  }
+  },
 });
 
 // Replace this with your real tests.
