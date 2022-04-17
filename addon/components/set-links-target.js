@@ -1,8 +1,7 @@
-import $ from 'jquery';
 import startsWith from 'lodash.startswith';
 
 import Component from '@ember/component';
-import { isEmpty, isPresent } from '@ember/utils';
+import { isEmpty } from '@ember/utils';
 
 import layout from '../templates/components/set-links-target';
 
@@ -28,15 +27,13 @@ export default Component.extend({
     const origin = window.document.location.origin;
     const targetValue = this.targetValue;
     // for each anchor check if we should set the target
-    this.$('a').each((index, element) => {
-      const link = $(element);
-      // are we excluding links to self?
-      if (isPresent(link.attr('href')) && startsWith(link.attr('href'), origin) && excludeSelfLinks) {
+    this.element.querySelectorAll('a').forEach(element => {
+      if (element.hasAttribute('href') && startsWith(element.getAttribute('href'), origin) && excludeSelfLinks) {
         return;
       }
       // got this far, then apply a target if it hasn't already got one
-      if (isEmpty(link.attr('target'))) {
-        link.attr('target', targetValue);
+      if (isEmpty(element.getAttribute('target'))) {
+        element.setAttribute('target', targetValue);
       }
     });
   },
