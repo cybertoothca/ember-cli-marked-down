@@ -8,5 +8,5 @@ export function initialize(application) {
 
 export default {
   name: 'showdown-converter',
-  initialize
+  initialize,
 };

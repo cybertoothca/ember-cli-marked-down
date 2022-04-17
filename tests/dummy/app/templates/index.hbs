@@ -5,7 +5,8 @@
 
   <div class="row">
     <div class="col-sm-4 form-group">
-      {{marked-down "> Some quoted text.
+      {{marked-down
+        "> Some quoted text.
 
 Some paragraph abutting up against some bullet-points.
 * Bullet 1
@@ -22,41 +23,39 @@ http://github.com
       }}
     </div>
     <div class="col-sm-8">
-      {{!-- @formatter:off --}}
-<pre>\{{marked-down "> Some quoted text.
-
-Some paragraph abutting up against some bullet-points.
-* Bullet 1
-* Bullet 2
-    * Bullet 2a
-
-http://github.com
-
-~~Some struck text!~~
-
-1. Numbered List
-    1. Another
-1. Number Two" }}
-</pre>
-      {{!-- @formatter:on --}}
+      {{! @formatter:off }}
+      <pre>\{{marked-down "> Some quoted text. Some paragraph abutting up against some bullet-points. * Bullet 1 *
+        Bullet 2 * Bullet 2a http://github.com ~~Some struck text!~~ 1. Numbered List 1. Another 1. Number Two" }}
+      </pre>
+      {{! @formatter:on }}
     </div>
   </div>
 
   <div class="alert alert-warning">
-    <strong>Notice</strong> in this example that the default Showdown converter doesn't handle
-    <em>simplifiedAutoLink</em> or <em>strikethrough</em>. You can override these settings in your
-    <code>config/environment.js</code> file (see
-    <a href="https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional" target="_blank">README
+    <strong>Notice</strong>
+    in this example that the default Showdown converter doesn't handle
+    <em>simplifiedAutoLink</em>
+    or
+    <em>strikethrough</em>. You can override these settings in your
+    <code>config/environment.js</code>
+    file (see
+    <a
+      href="https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      README
     </a>) or into the helper on a render-by-render basis (see the next example).
   </div>
 
-  <hr/>
+  <hr />
 
   <h4>Basic Example (overriding Showdown defaults within helper)</h4>
 
   <div class="row">
     <div class="col-sm-4 form-group">
-      {{marked-down "> Some quoted text.
+      {{marked-down
+        "> Some quoted text.
 
 Some paragraph abutting up against some bullet-points.
 * Bullet 1
@@ -69,40 +68,40 @@ http://github.com
 
 1. Numbered List
     1. Another
-1. Number Two" simplifiedAutoLink=true strikethrough=true
+1. Number Two"
+        simplifiedAutoLink=true
+        strikethrough=true
       }}
     </div>
     <div class="col-sm-8">
-      {{!-- @formatter:off --}}
-<pre>\{{marked-down "> Some quoted text.
-
-Some paragraph abutting up against some bullet-points.
-* Bullet 1
-* Bullet 2
-    * Bullet 2a
-
-http://github.com
-
-~~Some struck text!~~
-
-1. Numbered List
-    1. Another
-1. Number Two" simplifiedAutoLink=true strikethrough=true }}
-</pre>
-      {{!-- @formatter:on --}}
+      {{! @formatter:off }}
+      <pre>\{{marked-down "> Some quoted text. Some paragraph abutting up against some bullet-points. * Bullet 1 *
+        Bullet 2 * Bullet 2a http://github.com ~~Some struck text!~~ 1. Numbered List 1. Another 1. Number Two"
+        simplifiedAutoLink=true strikethrough=true }}
+      </pre>
+      {{! @formatter:on }}
     </div>
   </div>
 
   <div class="alert alert-success">
-    Notice how this example adds the <code>simplifiedAutoLink=true strikethrough=true</code> to the end of this helper
-    declaration. The rendered html to the left of the example code demonstrates that the strike-through and
-    simple-links options are working. You can override any showdown setting on the fly. As mentioned earlier,
-    consider configuring your commonly used settings within the <code>config/environment.js</code> (see
-    <a href="https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional" target="_blank">README
-    </a> for instructions).
+    Notice how this example adds the
+    <code>simplifiedAutoLink=true strikethrough=true</code>
+    to the end of this helper declaration. The rendered html to the left of the example code demonstrates that the
+    strike-through and simple-links options are working. You can override any showdown setting on the fly. As mentioned
+    earlier, consider configuring your commonly used settings within the
+    <code>config/environment.js</code>
+    (see
+    <a
+      href="https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      README
+    </a>
+    for instructions).
   </div>
 
-  <hr/>
+  <hr />
 </section>
 
 <section class="container">
@@ -110,7 +109,8 @@ http://github.com
 
   <div class="row">
     <div class="col-sm-4 form-group">
-      {{marked-down "Before a script tag that tries to raise an `alert(...)`:
+      {{marked-down
+        "Before a script tag that tries to raise an `alert(...)`:
 
 <script type='text/javascript'>alert('XSS Attack Attempt')</script>
 
@@ -120,21 +120,16 @@ If you did get an alert, please let us know!!!"
       }}
     </div>
     <div class="col-sm-8">
-      {{!-- @formatter:off --}}
-<pre>\{{marked-down "Before a script tag that tries to raise an `alert(...)`:
-
-&lt;script type='text/javascript'>alert('XSS Attack Attempt')&lt;/script>
-
-...and here after the script tag...there should have not been an alert displayed.
-
-If you did get an alert, please let us know!!!"
-}}
-</pre>
-      {{!-- @formatter:on --}}
+      {{! @formatter:off }}
+      <pre>\{{marked-down "Before a script tag that tries to raise an `alert(...)`: &lt;script
+        type='text/javascript'>alert('XSS Attack Attempt')&lt;/script> ...and here after the script tag...there should
+        have not been an alert displayed. If you did get an alert, please let us know!!!" }}
+      </pre>
+      {{! @formatter:on }}
     </div>
   </div>
 
-  <hr/>
+  <hr />
 </section>
 
 <section class="container">
@@ -147,30 +142,40 @@ If you did get an alert, please let us know!!!"
       {{#set-links-target}}
         {{marked-down
           "This link will open in a new tab (`_blank`) [https://github.com/cybertoothca/
-          ember-cli-marked-down](https://github.com/cybertoothca/ember-cli-marked-down)"}}
+          ember-cli-marked-down](https://github.com/cybertoothca/ember-cli-marked-down)"
+        }}
       {{/set-links-target}}
     </div>
     <div class="col-sm-8">
-      {{!-- @formatter:off --}}
-<pre>\{{#set-links-target}}
-  \{{marked-down "This link will open in a new tab (`_blank`)
-     https://github.com/cybertoothca/ember-cli-marked-down"}}
-\{{/set-links-target}}
-</pre>
-      {{!-- @formatter:on --}}
+      {{! @formatter:off }}
+      <pre>\{{#set-links-target}}
+        \{{marked-down "This link will open in a new tab (`_blank`)
+        https://github.com/cybertoothca/ember-cli-marked-down"}}
+        \{{/set-links-target}}
+      </pre>
+      {{! @formatter:on }}
     </div>
   </div>
 
   <div class="alert alert-info">
-    The <code>\{{set-links-target}}</code> component accepts a <code>targetValue</code> property that
-    will be applied to all of the links. It defaults to <code>_blank</code>. The standard html
-    target values are accepted, one of: <code>_blank</code>, <code>_self</code>, <code>_parent</code>,
-    <code>_top</code>, or a <em>frame name</em>.
-    See <a href="http://www.w3schools.com/jsref/prop_anchor_target.asp" target="_blank">
-    W3 Schools</a> for more information.
+    The
+    <code>\{{set-links-target}}</code>
+    component accepts a
+    <code>targetValue</code>
+    property that will be applied to all of the links. It defaults to
+    <code>_blank</code>. The standard html target values are accepted, one of:
+    <code>_blank</code>,
+    <code>_self</code>,
+    <code>_parent</code>,
+    <code>_top</code>, or a
+    <em>frame name</em>. See
+    <a href="http://www.w3schools.com/jsref/prop_anchor_target.asp" rel="noopener noreferrer" target="_blank">
+      W3 Schools
+    </a>
+    for more information.
   </div>
 
-  <hr>
+  <hr />
 
   <h3>Opening Self-Links In Same Tab</h3>
 
@@ -185,17 +190,16 @@ This link continues to open in another tab: [https://github.com/cybertoothca/emb
       {{/set-links-target}}
     </div>
     <div class="col-sm-8">
-      {{!-- @formatter:off --}}
-<pre>\{{#set-links-target}}
-  \{{marked-down "This link will open in the same tab its origin is the same as
-     the current page you're on: [http://ember-cli-marked-down.cybertooth.io/another-page]
-     (http://ember-cli-marked-down.cybertooth.io/another-page)
-
-     This link continues to open in another tab: [https://github.com/cybertoothca/ember-cli-marked-down]
-     (https://github.com/cybertoothca/ember-cli-marked-down)" }}
-\{{/set-links-target}}
-</pre>
-      {{!-- @formatter:on --}}
+      {{! @formatter:off }}
+      <pre>\{{#set-links-target}}
+        \{{marked-down "This link will open in the same tab its origin is the same as the current page you're on:
+        [http://ember-cli-marked-down.cybertooth.io/another-page]
+        (http://ember-cli-marked-down.cybertooth.io/another-page) This link continues to open in another tab:
+        [https://github.com/cybertoothca/ember-cli-marked-down] (https://github.com/cybertoothca/ember-cli-marked-down)"
+        }}
+        \{{/set-links-target}}
+      </pre>
+      {{! @formatter:on }}
     </div>
   </div>
 </section>

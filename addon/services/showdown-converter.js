@@ -1,10 +1,10 @@
-import EmberObject from '@ember/object';
-import { isEmpty } from '@ember/utils';
+import showdown from 'showdown';
+
 import { getOwner } from '@ember/application';
+import EmberObject from '@ember/object';
 import { on } from '@ember/object/evented';
 import Service from '@ember/service';
-import Ember from 'ember';
-import showdown from 'showdown';
+import { isEmpty } from '@ember/utils';
 
 export default Service.extend({
   /**
@@ -18,14 +18,18 @@ export default Service.extend({
     const config = getOwner(this).resolveRegistration('config:environment');
     // set showdown global settings from the environment
     if (isEmpty(config.APP.showdown)) {
-      Ember.Logger.info('The `ember-cli-marked-down` addon will use ShowdownJS defaults to create the Converters.');
-      Ember.Logger.info('If you want to customize ShowdownJS behaviour, please see the ember-cli-marked-down README: https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional');
+      // eslint-disable-next-line no-console
+      console.info('The `ember-cli-marked-down` addon will use ShowdownJS defaults to create the Converters.');
+      // eslint-disable-next-line no-console
+      console.info(
+        'If you want to customize ShowdownJS behaviour, please see the ember-cli-marked-down README: https://github.com/cybertoothca/ember-cli-marked-down#showdownjs-configuration-optional'
+      );
       return;
     }
     const showdownConfig = EmberObject.create(config.APP.showdown);
     // setting details can be found here: https://github.com/showdownjs/showdown#valid-options
-    Object.keys(showdownConfig).forEach((key) => {
+    Object.keys(showdownConfig).forEach(key => {
       showdown.setOption(key, showdownConfig.get(key));
     });
-  }
+  },
 });

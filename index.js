@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-marked-down'
+  name: require('./package').name,
 };

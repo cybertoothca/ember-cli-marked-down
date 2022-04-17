@@ -1,6 +1,8 @@
 # ember-cli-marked-down
 
-[![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down)
+[![npm version](http://badge.fury.io/js/ember-cli-marked-down.svg)](http://badge.fury.io/js/ember-cli-marked-down) ![downloads](https://img.shields.io/npm/dy/ember-cli-marked-down.svg) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-marked-down)
+
+[![ember-observer-badge](http://emberobserver.com/badges/ember-cli-marked-down.svg)](http://emberobserver.com/addons/ember-cli-marked-down) [![License](http://img.shields.io/npm/l/ember-cli-marked-down.svg)](LICENSE.md)
 
 This addon provides a means to generate html formatted markup from
 _markdown_ source. The [ShowdownJS](https://github.com/showdownjs/showdown)
@@ -54,7 +56,7 @@ The helper that produces html from the supplied markdown. Override [Showdown's o
 #### Examples
 
 ```handlebars
-{{marked-down "Some __markdown__ text"}}
+{{marked-down 'Some __markdown__ text'}}
 ```
 
 ...yields:
@@ -66,7 +68,7 @@ The helper that produces html from the supplied markdown. Override [Showdown's o
 Passing in a Showdown option:
 
 ```handlebars
-{{marked-down "Some ~~struck~~ markdown text" strikethrough=true}}
+{{marked-down 'Some ~~struck~~ markdown text' strikethrough=true}}
 ```
 
 ...yields
@@ -108,8 +110,8 @@ assigned. This default behaviour can be overridden by setting the
 Default Behaviour:
 
 ```handlebars
-{{#set-links-target excludeSelfLinks?=true targetValue="_blank"}}
-  <a href="http://github.com">GitHub</a>
+{{#set-links-target excludeSelfLinks?=true targetValue='_blank'}}
+  <a href='http://github.com'>GitHub</a>
 {{/set-links-target}}
 ```
 
@@ -269,8 +271,9 @@ cd ember-cli-marked-down
 
 ### Linting
 
+- `yarn lint:hbs`
 - `yarn lint:js`
-- `yarn lint:js -- --fix`
+- `yarn lint:js --fix`
 
 ### Running tests
 
