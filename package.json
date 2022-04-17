@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "bootstrap": "3.4.1",
-    "bootstrap-sass": "3.4.1",
+    "bootstrap-sass": "3.4.3",
     "bootswatch": "^3.3.7",
     "broccoli-asset-rev": "^3.0.0",
     "ember-ajax": "^3.0.0",
