@@ -24,9 +24,9 @@ export default Component.extend({
    * Sets any `<a>` (link) `target` attributes to whatever we've specified in the `targetValue` property.
    */
   didInsertElement() {
-    const excludeSelfLinks = this.get('excludeSelfLinks?');
+    const excludeSelfLinks = this['excludeSelfLinks?'];
     const origin = window.document.location.origin;
-    const targetValue = this.get('targetValue');
+    const targetValue = this.targetValue;
     // for each anchor check if we should set the target
     this.$('a').each((index, element) => {
       const link = $(element);
