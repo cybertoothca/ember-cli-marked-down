@@ -20,6 +20,16 @@ module('Integration | Component | set links target', function (hooks) {
     assert.equal(find('.set-links-target').innerHTML.trim(), '<h3 id="heading3">Heading 3</h3>');
   });
 
+  test('when the yield link(s) have target set to _top', async function (assert) {
+    await render(hbs`
+      {{#set-links-target targetValue="_top"}}
+        {{marked-down "[Some Link](http://github.com)"}}
+      {{/set-links-target}}
+    `);
+    assert.dom('a').hasAttribute('target', '_top');
+    assert.dom('a').hasNoAttribute('rel');
+  });
+
   test('when the yields link(s) do not have a target value, _blank is added', async function (assert) {
     await render(hbs`
       {{#set-links-target}}
@@ -27,6 +37,7 @@ module('Integration | Component | set links target', function (hooks) {
       {{/set-links-target}}
     `);
     assert.dom('a').hasAttribute('target', '_blank');
+    assert.dom('a').hasAttribute('rel', 'noopener noreferrer');
   });
 
   test('when excludeSelfLinks is false, the target is applied to local links', async function (assert) {
@@ -36,6 +47,7 @@ module('Integration | Component | set links target', function (hooks) {
       {{/set-links-target}}
     `);
     assert.dom('a').hasAttribute('target', '_blank');
+    assert.dom('a').hasAttribute('rel', 'noopener noreferrer');
   });
 
   test('when excludeSelfLinks defaults to true, the target is not applied to such links', async function (assert) {
@@ -46,6 +58,7 @@ module('Integration | Component | set links target', function (hooks) {
       {{/set-links-target}}
     `);
     assert.dom('a').hasNoAttribute('target');
+    assert.dom('a').hasNoAttribute('rel');
   });
 
   test('when excludeSelfLinks is explicitly set to true, the target is not applied to such links', async function (assert) {
@@ -56,6 +69,7 @@ module('Integration | Component | set links target', function (hooks) {
       {{/set-links-target}}
     `);
     assert.dom('a').hasNoAttribute('target');
+    assert.dom('a').hasNoAttribute('rel');
   });
 
   test('when the target is set for one of several links', async function (assert) {
@@ -66,6 +80,8 @@ module('Integration | Component | set links target', function (hooks) {
       {{/set-links-target}}
     `);
     assert.dom('a').hasNoAttribute('target');
+    assert.dom('a').hasNoAttribute('rel');
     assert.dom(findAll('a')[1]).hasAttribute('target', '_blank');
+    assert.dom(findAll('a')[1]).hasAttribute('rel', 'noopener noreferrer');
   });
 });
