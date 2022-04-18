@@ -34,6 +34,9 @@ export default Component.extend({
       // got this far, then apply a target if it hasn't already got one
       if (isEmpty(element.getAttribute('target'))) {
         element.setAttribute('target', targetValue);
+        if (targetValue === '_blank') {
+          element.setAttribute('rel', 'noopener noreferrer');
+        }
       }
     });
   },
