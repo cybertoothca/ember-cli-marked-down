@@ -1,5 +1,5 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 
 import { find, findAll, render } from '@ember/test-helpers';
