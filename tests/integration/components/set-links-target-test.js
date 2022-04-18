@@ -13,18 +13,18 @@ module('Integration | Component | set links target', function (hooks) {
 
   test('when the yield does not include any links', async function (assert) {
     await render(hbs`
-      {{#set-links-target}}
+      <SetLinksTarget>
         {{marked-down "### Heading 3"}}
-      {{/set-links-target}}
+      </SetLinksTarget>
     `);
     assert.equal(find('.set-links-target').innerHTML.trim(), '<h3 id="heading3">Heading 3</h3>');
   });
 
   test('when the yield link(s) have target set to _top', async function (assert) {
     await render(hbs`
-      {{#set-links-target targetValue="_top"}}
+      <SetLinksTarget @targetValue="_top">
         {{marked-down "[Some Link](http://github.com)"}}
-      {{/set-links-target}}
+      </SetLinksTarget>
     `);
     assert.dom('a').hasAttribute('target', '_top');
     assert.dom('a').hasNoAttribute('rel');
@@ -32,9 +32,9 @@ module('Integration | Component | set links target', function (hooks) {
 
   test('when the yields link(s) do not have a target value, _blank is added', async function (assert) {
     await render(hbs`
-      {{#set-links-target}}
+      <SetLinksTarget>
         {{marked-down "[Some Link](http://github.com)"}}
-      {{/set-links-target}}
+      </SetLinksTarget>
     `);
     assert.dom('a').hasAttribute('target', '_blank');
     assert.dom('a').hasAttribute('rel', 'noopener noreferrer');
@@ -42,9 +42,9 @@ module('Integration | Component | set links target', function (hooks) {
 
   test('when excludeSelfLinks is false, the target is applied to local links', async function (assert) {
     await render(hbs`
-      {{#set-links-target excludeSelfLinks?=false}}
+      <SetLinksTarget @excludeSelfLinks?={{false}}>
         {{marked-down "[Some Link](http://localhost:7357/some/path)"}}
-      {{/set-links-target}}
+      </SetLinksTarget>
     `);
     assert.dom('a').hasAttribute('target', '_blank');
     assert.dom('a').hasAttribute('rel', 'noopener noreferrer');
@@ -53,9 +53,9 @@ module('Integration | Component | set links target', function (hooks) {
   test('when excludeSelfLinks defaults to true, the target is not applied to such links', async function (assert) {
     this.set('origin', window.document.location.origin);
     await render(hbs`
-      {{#set-links-target}}
+      <SetLinksTarget>
         {{marked-down (concat "[Some Link](" origin "/some/path)")}}
-      {{/set-links-target}}
+      </SetLinksTarget>
     `);
     assert.dom('a').hasNoAttribute('target');
     assert.dom('a').hasNoAttribute('rel');
@@ -64,9 +64,9 @@ module('Integration | Component | set links target', function (hooks) {
   test('when excludeSelfLinks is explicitly set to true, the target is not applied to such links', async function (assert) {
     this.set('origin', window.document.location.origin);
     await render(hbs`
-      {{#set-links-target excludeSelfLinks?=true}}
+      <SetLinksTarget @excludeSelfLinks?={{true}}>
         {{marked-down (concat "[Some Link](" origin "/some/path)")}}
-      {{/set-links-target}}
+      </SetLinksTarget>
     `);
     assert.dom('a').hasNoAttribute('target');
     assert.dom('a').hasNoAttribute('rel');
@@ -75,9 +75,9 @@ module('Integration | Component | set links target', function (hooks) {
   test('when the target is set for one of several links', async function (assert) {
     this.set('origin', window.document.location.origin);
     await render(hbs`
-      {{#set-links-target}}
+      <SetLinksTarget>
         {{marked-down (concat "[Some Link That Opens In Same Tab](" origin "/some/path) [Another Link That Will Open In A New Tab](https://github.com/cybertoothca/ember-cli-marked-down)")}}
-      {{/set-links-target}}
+      </SetLinksTarget>
     `);
     assert.dom('a').hasNoAttribute('target');
     assert.dom('a').hasNoAttribute('rel');

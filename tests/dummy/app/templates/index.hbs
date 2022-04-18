@@ -139,12 +139,12 @@ If you did get an alert, please let us know!!!"
 
   <div class="row">
     <div class="col-sm-4 form-group">
-      {{#set-links-target}}
+      <SetLinksTarget>
         {{marked-down
           "This link will open in a new tab (`_blank`) [https://github.com/cybertoothca/
           ember-cli-marked-down](https://github.com/cybertoothca/ember-cli-marked-down)"
         }}
-      {{/set-links-target}}
+      </SetLinksTarget>
     </div>
     <div class="col-sm-8">
       {{! @formatter:off }}
@@ -181,13 +181,13 @@ If you did get an alert, please let us know!!!"
 
   <div class="row">
     <div class="col-sm-4 form-group">
-      {{#set-links-target excludeSelfLinks?=true}}
+      <SetLinksTarget @excludeSelfLinks?={{true}}>
         {{marked-down
           "This link will open in the same tab its origin is the same as the current page you're on: [http://ember-cli-marked-down.cybertooth.io/another-page](http://ember-cli-marked-down.cybertooth.io/another-page)
 
 This link continues to open in another tab: [https://github.com/cybertoothca/ember-cli-marked-down](https://github.com/cybertoothca/ember-cli-marked-down)"
         }}
-      {{/set-links-target}}
+      </SetLinksTarget>
     </div>
     <div class="col-sm-8">
       {{! @formatter:off }}
